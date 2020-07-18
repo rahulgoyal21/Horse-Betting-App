@@ -100,202 +100,200 @@ const GameDetails = () => {
       >
         Back
       </Button>
-      <TableContainer component={Paper}>
-        <Table
-          className={classes.table}
-          aria-label="simple table"
-          style={{ border: "2px solid #000000" }}
-        >
-          <TableHead>
-            <TableRow>
-              <StyledTableCell rowSpan="2" align="center">
-                <strong>Game Type</strong>
-              </StyledTableCell>
-              <StyledTableCell colSpan="8" align="center">
-                <strong>Races Information</strong>
-              </StyledTableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell
-                // rowSpan="2"
-                align="center"
+      {data.length ? (
+        <TableContainer component={Paper}>
+          <Table
+            className={classes.table}
+            aria-label="simple table"
+            style={{ border: "2px solid #000000" }}
+          >
+            <TableHead>
+              <TableRow>
+                <StyledTableCell rowSpan="2" align="center">
+                  <strong>Game Type</strong>
+                </StyledTableCell>
+                <StyledTableCell colSpan="8" align="center">
+                  <strong>Races Information</strong>
+                </StyledTableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell
+                  align="center"
+                  style={{
+                    border: "0.5px solid #000000",
+                  }}
+                >
+                  Race No.
+                </TableCell>
+                <TableCell
+                  align="center"
+                  style={{
+                    border: "0.5px solid #000000",
+                  }}
+                >
+                  Race Name
+                </TableCell>
+                <TableCell
+                  align="center"
+                  style={{
+                    border: "0.5px solid #000000",
+                  }}
+                >
+                  Start Time
+                </TableCell>
+                <TableCell
+                  colspan="5"
+                  align="center"
+                  style={{
+                    border: "0.5px solid #000000",
+                  }}
+                >
+                  Starts Information
+                </TableCell>
+              </TableRow>
+              <TableRow
                 style={{
                   border: "0.5px solid #000000",
                 }}
-              >
-                Race No.
-              </TableCell>
-              <TableCell
-                // rowSpan="2"
-                align="center"
-                style={{
-                  border: "0.5px solid #000000",
-                }}
-              >
-                Race Name
-              </TableCell>
-              <TableCell
-                // rowSpan="2"
-                align="center"
-                style={{
-                  border: "0.5px solid #000000",
-                }}
-              >
-                Start Time
-              </TableCell>
-              <TableCell
-                colspan="5"
-                align="center"
-                style={{
-                  border: "0.5px solid #000000",
-                }}
-              >
-                Starts Information
-              </TableCell>
-            </TableRow>
-            <TableRow
-              style={{
-                border: "0.5px solid #000000",
-              }}
-            ></TableRow>
-          </TableHead>
+              ></TableRow>
+            </TableHead>
 
-          <TableBody>
-            {data.map((item) => (
-              <StyledTableRow key={item.number}>
-                <TableCell
-                  component="th"
-                  scope="row"
-                  align="center"
-                  style={{
-                    border: "0.5px solid #000000",
-                  }}
-                >
-                  {gameType}
-                </TableCell>
-                <TableCell
-                  component="th"
-                  scope="row"
-                  align="center"
-                  style={{
-                    border: "0.5px solid #000000",
-                  }}
-                >
-                  {item.number}
-                </TableCell>
-                <TableCell
-                  align="center"
-                  style={{
-                    border: "0.5px solid #000000",
-                  }}
-                >
-                  {item.name}
-                </TableCell>
-                <TableCell
-                  align="center"
-                  style={{
-                    border: "0.5px solid #000000",
-                  }}
-                >
-                  {item.newStartTime}
-                </TableCell>
-                <TableCell
-                  style={{
-                    border: "0.5px solid #000000",
-                  }}
-                >
-                  <Accordion
-                    expanded={expanded === item.number}
-                    onChange={handleChange(item.number)}
+            <TableBody>
+              {data.map((item) => (
+                <StyledTableRow key={item.number}>
+                  <TableCell
+                    component="th"
+                    scope="row"
+                    align="center"
+                    style={{
+                      border: "0.5px solid #000000",
+                    }}
                   >
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1bh-content"
-                      id="panel1bh-header"
+                    {gameType}
+                  </TableCell>
+                  <TableCell
+                    component="th"
+                    scope="row"
+                    align="center"
+                    style={{
+                      border: "0.5px solid #000000",
+                    }}
+                  >
+                    {item.number}
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    style={{
+                      border: "0.5px solid #000000",
+                    }}
+                  >
+                    {item.name}
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    style={{
+                      border: "0.5px solid #000000",
+                    }}
+                  >
+                    {item.newStartTime}
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      border: "0.5px solid #000000",
+                    }}
+                  >
+                    <Accordion
+                      expanded={expanded === item.number}
+                      onChange={handleChange(item.number)}
                     >
-                      <Typography className={classes.heading}>
-                        Click To See Starts Information
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <TableContainer component={Paper}>
-                        <Table
-                          className={classes.table}
-                          aria-label="simple table"
-                          style={{ border: "2px solid #000000" }}
-                        >
-                          <TableHead>
-                            <TableRow
-                              style={{
-                                border: "0.5px solid #ffffff",
-                              }}
-                            >
-                              <StyledTableCell>Start No.</StyledTableCell>
-                              <StyledTableCell>Horse Name</StyledTableCell>
-                              <StyledTableCell>Rider Name</StyledTableCell>
-                              <StyledTableCell>Trainer Name</StyledTableCell>
-                              <StyledTableCell>
-                                Horse Father Name
-                              </StyledTableCell>
-                            </TableRow>
-                          </TableHead>
-                          <TableBody>
-                            {item.startInfo.map((item) => (
-                              <StyledTableRow>
-                                <TableCell
-                                  align="center"
-                                  style={{
-                                    border: "0.5px solid #000000",
-                                  }}
-                                >
-                                  {item.startNo}
-                                </TableCell>
-                                <TableCell
-                                  align="center"
-                                  style={{
-                                    border: "0.5px solid #000000",
-                                  }}
-                                >
-                                  {item.horseName}
-                                </TableCell>
-                                <TableCell
-                                  align="center"
-                                  style={{
-                                    border: "0.5px solid #000000",
-                                  }}
-                                >
-                                  {item.rider}
-                                </TableCell>
-                                <TableCell
-                                  align="center"
-                                  style={{
-                                    border: "0.5px solid #000000",
-                                  }}
-                                >
-                                  {item.trainer}
-                                </TableCell>
-                                <TableCell
-                                  align="center"
-                                  style={{
-                                    border: "0.5px solid #000000",
-                                  }}
-                                >
-                                  {item.horseFather}
-                                </TableCell>
-                              </StyledTableRow>
-                            ))}
-                          </TableBody>
-                        </Table>
-                      </TableContainer>
-                    </AccordionDetails>
-                  </Accordion>
-                </TableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      {/* ) : (
+                      <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1bh-content"
+                        id="panel1bh-header"
+                      >
+                        <Typography className={classes.heading}>
+                          Click To See Starts Information
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <TableContainer component={Paper}>
+                          <Table
+                            className={classes.table}
+                            aria-label="simple table"
+                            style={{ border: "2px solid #000000" }}
+                          >
+                            <TableHead>
+                              <TableRow
+                                style={{
+                                  border: "0.5px solid #ffffff",
+                                }}
+                              >
+                                <StyledTableCell>Start No.</StyledTableCell>
+                                <StyledTableCell>Horse Name</StyledTableCell>
+                                <StyledTableCell>Rider Name</StyledTableCell>
+                                <StyledTableCell>Trainer Name</StyledTableCell>
+                                <StyledTableCell>
+                                  Horse Father Name
+                                </StyledTableCell>
+                              </TableRow>
+                            </TableHead>
+                            <TableBody>
+                              {item.startInfo.map((item) => (
+                                <StyledTableRow>
+                                  <TableCell
+                                    align="center"
+                                    style={{
+                                      border: "0.5px solid #000000",
+                                    }}
+                                  >
+                                    {item.startNo}
+                                  </TableCell>
+                                  <TableCell
+                                    align="center"
+                                    style={{
+                                      border: "0.5px solid #000000",
+                                    }}
+                                  >
+                                    {item.horseName}
+                                  </TableCell>
+                                  <TableCell
+                                    align="center"
+                                    style={{
+                                      border: "0.5px solid #000000",
+                                    }}
+                                  >
+                                    {item.rider}
+                                  </TableCell>
+                                  <TableCell
+                                    align="center"
+                                    style={{
+                                      border: "0.5px solid #000000",
+                                    }}
+                                  >
+                                    {item.trainer}
+                                  </TableCell>
+                                  <TableCell
+                                    align="center"
+                                    style={{
+                                      border: "0.5px solid #000000",
+                                    }}
+                                  >
+                                    {item.horseFather}
+                                  </TableCell>
+                                </StyledTableRow>
+                              ))}
+                            </TableBody>
+                          </Table>
+                        </TableContainer>
+                      </AccordionDetails>
+                    </Accordion>
+                  </TableCell>
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      ) : (
         <Grid
           container
           direction="row"
@@ -303,11 +301,9 @@ const GameDetails = () => {
           justify="center"
           style={{ minHeight: "50vh", width: "100%" }}
         >
-          <Grid item xs={12}>
-            <CircularProgress />
-          </Grid>
+          <CircularProgress />
         </Grid>
-      )} */}
+      )}
     </Grid>
   );
 };
