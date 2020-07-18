@@ -34,7 +34,7 @@ const GameDetails = () => {
   const history = useHistory();
   const useStyles = makeStyles({
     table: {
-      minWidth: 650,
+      minWidth: 700,
     },
   });
   const backNavigation = () => {
@@ -80,7 +80,7 @@ const GameDetails = () => {
         <Typography
           align="center"
           display="block"
-          variant="h4"
+          variant="h2"
           style={{
             fontFamily: "'Dancing Script', cursive",
             color: "#9AFF33 ",
@@ -151,11 +151,6 @@ const GameDetails = () => {
                   Starts Information
                 </TableCell>
               </TableRow>
-              <TableRow
-                style={{
-                  border: "0.5px solid #000000",
-                }}
-              ></TableRow>
             </TableHead>
 
             <TableBody>
@@ -228,11 +223,19 @@ const GameDetails = () => {
                                   border: "0.5px solid #ffffff",
                                 }}
                               >
-                                <StyledTableCell>Start No.</StyledTableCell>
-                                <StyledTableCell>Horse Name</StyledTableCell>
-                                <StyledTableCell>Rider Name</StyledTableCell>
-                                <StyledTableCell>Trainer Name</StyledTableCell>
-                                <StyledTableCell>
+                                <StyledTableCell align="center">
+                                  Start No.
+                                </StyledTableCell>
+                                <StyledTableCell align="center">
+                                  Horse Name
+                                </StyledTableCell>
+                                <StyledTableCell align="center">
+                                  Rider Name
+                                </StyledTableCell>
+                                <StyledTableCell align="center">
+                                  Trainer Name
+                                </StyledTableCell>
+                                <StyledTableCell align="center">
                                   Horse Father Name
                                 </StyledTableCell>
                               </TableRow>
