@@ -270,7 +270,20 @@ const GameDetails = () => {
                                       border: "0.5px solid #000000",
                                     }}
                                   >
-                                    {item.trainer}
+                                    <Accordion>
+                                      <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon />}
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header"
+                                      >
+                                        <Typography className={classes.heading}>
+                                          Click
+                                        </Typography>
+                                      </AccordionSummary>
+                                      <AccordionDetails>
+                                        {item.trainer}
+                                      </AccordionDetails>
+                                    </Accordion>
                                   </TableCell>
                                   <TableCell
                                     align="center"
@@ -278,7 +291,20 @@ const GameDetails = () => {
                                       border: "0.5px solid #000000",
                                     }}
                                   >
-                                    {item.horseFather}
+                                    <Accordion>
+                                      <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon />}
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header"
+                                      >
+                                        <Typography className={classes.heading}>
+                                          Click
+                                        </Typography>
+                                      </AccordionSummary>
+                                      <AccordionDetails>
+                                        {item.horseFather}
+                                      </AccordionDetails>
+                                    </Accordion>
                                   </TableCell>
                                 </StyledTableRow>
                               ))}
@@ -307,5 +333,4 @@ const GameDetails = () => {
     </Grid>
   );
 };
-
 export default GameDetails;
