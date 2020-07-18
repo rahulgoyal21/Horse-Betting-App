@@ -18,15 +18,23 @@ import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from "@material-ui/core";
 
 const GameDetails = () => {
   const [data, setData] = useState([]);
+  const [expanded, setExpanded] = useState(false);
+
   const route = useRouteMatch();
   const gameType = route.params.id.split("_")[0];
   const history = useHistory();
   const useStyles = makeStyles({
     table: {
-      minWidth: 300,
+      minWidth: 650,
     },
   });
   const backNavigation = () => {
@@ -36,6 +44,7 @@ const GameDetails = () => {
     head: {
       backgroundColor: "#000000",
       color: "#ffffff",
+      align: "center",
     },
   }))(TableCell);
 
@@ -47,6 +56,10 @@ const GameDetails = () => {
     },
   }))(TableRow);
   const classes = useStyles();
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -87,57 +100,6 @@ const GameDetails = () => {
       >
         Back
       </Button>
-
-      {/* <Grid item style={{ width: "100%" }}>
-        
-      </Grid>
-      <Grid
-        container
-        direction="row"
-        style={{ margin: "20px 0px" }}
-        spacing={2}
-      >
-        <Grid item>
-          <Input
-            autoFocus={true}
-            style={{
-              border: "1px solid #000000",
-              padding: "5px",
-            }}
-            placeholder="Enter The Game Type"
-            value={gameType}
-            onChange={(event) => setGameType(event.target.value)}
-          />
-        </Grid>
-        <Grid item>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => searchGameClicked()}
-          >
-            Search Game
-          </Button>
-        </Grid>
-        <Grid container item direction="row" alignItems="center" spacing={3}>
-          <Typography
-            size="10px"
-            style={{ color: "#A9A9A9", size: "10px" }}
-            align="center"
-          >
-            Search Game Type Here like "V75, V65, V64, V4"
-          </Typography>
-        </Grid>
-      </Grid>
-      <Grid item style={{ width: "100%" }}>
-        <Typography
-          align="center"
-          variant="h3"
-          style={{ fontFamily: "'Dancing Script', cursive", color: "#9AFF33 " }}
-        >
-          Game Schedule Table
-        </Typography>
-      </Grid> */}
-
       <TableContainer component={Paper}>
         <Table
           className={classes.table}
@@ -146,7 +108,7 @@ const GameDetails = () => {
         >
           <TableHead>
             <TableRow>
-              <StyledTableCell rowSpan="3" align="center">
+              <StyledTableCell rowSpan="2" align="center">
                 <strong>Game Type</strong>
               </StyledTableCell>
               <StyledTableCell colSpan="8" align="center">
@@ -155,7 +117,7 @@ const GameDetails = () => {
             </TableRow>
             <TableRow>
               <TableCell
-                rowSpan="2"
+                // rowSpan="2"
                 align="center"
                 style={{
                   border: "0.5px solid #000000",
@@ -164,7 +126,7 @@ const GameDetails = () => {
                 Race No.
               </TableCell>
               <TableCell
-                rowSpan="2"
+                // rowSpan="2"
                 align="center"
                 style={{
                   border: "0.5px solid #000000",
@@ -173,7 +135,7 @@ const GameDetails = () => {
                 Race Name
               </TableCell>
               <TableCell
-                rowSpan="2"
+                // rowSpan="2"
                 align="center"
                 style={{
                   border: "0.5px solid #000000",
@@ -195,47 +157,7 @@ const GameDetails = () => {
               style={{
                 border: "0.5px solid #000000",
               }}
-            >
-              <TableCell
-                style={{
-                  border: "0.5px solid #000000",
-                }}
-              >
-                Start No.
-              </TableCell>
-              <TableCell
-                align="center"
-                style={{
-                  border: "0.5px solid #000000",
-                }}
-              >
-                Horse Name
-              </TableCell>
-              <TableCell
-                align="center"
-                style={{
-                  border: "0.5px solid #000000",
-                }}
-              >
-                Rider Name
-              </TableCell>
-              <TableCell
-                align="center"
-                style={{
-                  border: "0.5px solid #000000",
-                }}
-              >
-                Tainer Name
-              </TableCell>
-              <TableCell
-                align="center"
-                style={{
-                  border: "0.5px solid #000000",
-                }}
-              >
-                Horse Father Name
-              </TableCell>
-            </TableRow>
+            ></TableRow>
           </TableHead>
 
           <TableBody>
@@ -276,6 +198,97 @@ const GameDetails = () => {
                   }}
                 >
                   {item.newStartTime}
+                </TableCell>
+                <TableCell
+                  style={{
+                    border: "0.5px solid #000000",
+                  }}
+                >
+                  <Accordion
+                    expanded={expanded === item.number}
+                    onChange={handleChange(item.number)}
+                  >
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1bh-content"
+                      id="panel1bh-header"
+                    >
+                      <Typography className={classes.heading}>
+                        Click To See Starts Information
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <TableContainer component={Paper}>
+                        <Table
+                          className={classes.table}
+                          aria-label="simple table"
+                          style={{ border: "2px solid #000000" }}
+                        >
+                          <TableHead>
+                            <TableRow
+                              style={{
+                                border: "0.5px solid #ffffff",
+                              }}
+                            >
+                              <StyledTableCell>Start No.</StyledTableCell>
+                              <StyledTableCell>Horse Name</StyledTableCell>
+                              <StyledTableCell>Rider Name</StyledTableCell>
+                              <StyledTableCell>Trainer Name</StyledTableCell>
+                              <StyledTableCell>
+                                Horse Father Name
+                              </StyledTableCell>
+                            </TableRow>
+                          </TableHead>
+                          <TableBody>
+                            {item.startInfo.map((item) => (
+                              <StyledTableRow>
+                                <TableCell
+                                  align="center"
+                                  style={{
+                                    border: "0.5px solid #000000",
+                                  }}
+                                >
+                                  {item.startNo}
+                                </TableCell>
+                                <TableCell
+                                  align="center"
+                                  style={{
+                                    border: "0.5px solid #000000",
+                                  }}
+                                >
+                                  {item.horseName}
+                                </TableCell>
+                                <TableCell
+                                  align="center"
+                                  style={{
+                                    border: "0.5px solid #000000",
+                                  }}
+                                >
+                                  {item.rider}
+                                </TableCell>
+                                <TableCell
+                                  align="center"
+                                  style={{
+                                    border: "0.5px solid #000000",
+                                  }}
+                                >
+                                  {item.trainer}
+                                </TableCell>
+                                <TableCell
+                                  align="center"
+                                  style={{
+                                    border: "0.5px solid #000000",
+                                  }}
+                                >
+                                  {item.horseFather}
+                                </TableCell>
+                              </StyledTableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </TableContainer>
+                    </AccordionDetails>
+                  </Accordion>
                 </TableCell>
               </StyledTableRow>
             ))}
