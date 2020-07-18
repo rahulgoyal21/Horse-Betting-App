@@ -2,16 +2,13 @@ import React, { useEffect, useState } from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import {
   Table,
-  Avatar,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
   Paper,
-  Container,
   Link,
-  Card,
 } from "@material-ui/core";
 import { getGameTableData } from "../../gateways/game-api";
 import CircularProgress from "@material-ui/core/CircularProgress";

@@ -10,10 +10,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import Container from "@material-ui/core/Container";
-import Link from "@material-ui/core/Link";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
@@ -67,7 +64,7 @@ const GameDetails = () => {
       setData(response);
     }
     fetchData();
-  }, []);
+  }, [route]);
   return (
     <Grid container spacing={4} style={{ padding: "50px" }}>
       <Grid
