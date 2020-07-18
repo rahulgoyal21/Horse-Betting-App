@@ -68,7 +68,6 @@ const GameDetails = () => {
     }
     fetchData();
   }, []);
-  console.log("......table info data.....", data);
   return (
     <Grid container spacing={4} style={{ padding: "50px" }}>
       <Grid

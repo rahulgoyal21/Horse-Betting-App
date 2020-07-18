@@ -67,7 +67,6 @@ const Home = () => {
     }
     fetchData();
   }, []);
-  console.log("...........", gameType);
   return (
     <Grid container style={{ padding: "50px" }}>
       <Grid item style={{ width: "100%" }}>
